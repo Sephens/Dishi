@@ -5,9 +5,10 @@
         android:duration="2000"
         android:fromYDelta="100%p"
         android:fromXDelta="0%p"
-        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
-        android:toYDelta="30%"
+        android:interpolator="@android:anim/decelerate_interpolator"
         android:toXDelta="0%p"
+        android:toYDelta="50%"
+
         />
 
 </set>
