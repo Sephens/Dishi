@@ -18,4 +18,5 @@
     <color name="secondaryLightColor">#6effe8</color>
     <color name="secondaryDarkColor">#00b686</color>
     <color name="secondaryTextColor">#000000</color>
+    <color name="lbl_title">#37474f</color>
 </resources>
