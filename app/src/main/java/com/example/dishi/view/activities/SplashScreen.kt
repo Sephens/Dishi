@@ -1,4 +1,4 @@
-package com.example.dishi
+package com.example.dishi.view.activities
 
 import android.content.Intent
 import android.os.Build
@@ -10,6 +10,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import com.example.dishi.R
 import com.example.dishi.databinding.ActivitySplashScreenBinding
 
 class SplashScreen : AppCompatActivity() {
@@ -33,7 +34,7 @@ class SplashScreen : AppCompatActivity() {
         }
 
         val splashlogoAnimation=AnimationUtils.loadAnimation(this, R.anim.splash_anim)
-        val splashLogoTextAnimation = AnimationUtils.loadAnimation(this,R.anim.splash_ltext_anim)
+        val splashLogoTextAnimation = AnimationUtils.loadAnimation(this, R.anim.splash_ltext_anim)
         splashScreenBinding.logoImage.animation = splashlogoAnimation
         splashlogoAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) {

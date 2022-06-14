@@ -1,4 +1,4 @@
-package com.example.dishi.ui.dashboard
+package com.example.dishi.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
