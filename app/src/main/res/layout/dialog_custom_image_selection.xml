@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp"
+    app:chainUseRtl="true">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Image Action"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_camera"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_camera"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:foreground="?selectableItemBackgroundBorderless"
+        android:text="Camera"
+        android:textColor="@color/secondaryLightColor"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:drawableTopCompat="@drawable/ic_photo_camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_gallery"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_gallery"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:foreground="?selectableItemBackgroundBorderless"
+        android:text="Gallery"
+        android:textColor="@color/secondaryLightColor"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:drawableTopCompat="@drawable/ic_gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_camera"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
