@@ -1,14 +1,17 @@
 package com.example.dishi.view.activities
 
 import android.Manifest
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Application
 import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.provider.Settings
 import android.view.View
 import android.widget.Toast
@@ -55,6 +58,9 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener{
         }
     }
 
+
+        val CAMERA = 1
+
     private fun customImageSelectionDialog(){
         val dialog = Dialog(this)
         val binding: DialogCustomImageSelectionBinding = DialogCustomImageSelectionBinding.inflate(layoutInflater)
@@ -67,9 +73,14 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener{
                 Manifest.permission.CAMERA
             ).withListener(object : MultiplePermissionsListener {
                 override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-                    if (report!!.areAllPermissionsGranted()){
-                        Toast.makeText(this@AddUpdateDishActivity,"Permission granted",Toast.LENGTH_SHORT).show()
+                    report?.let{
+//                        if (report.areAllPermissionsGranted()){
+//                            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//                            startActivityForResult(intent, CAMERA)
+//                        }
+                        dispatchTakePictureIntent()
                     }
+
                 }
 
                 override fun onPermissionRationaleShouldBeShown(
@@ -83,6 +94,9 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener{
 
             dialog.dismiss()
         }
+
+
+
 
 
         //When a user clicks on  the gallery image
@@ -114,6 +128,8 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener{
         dialog.show()
     }
 
+
+
     private fun showOnPermissionRationaleShouldBeShown(){
         AlertDialog.Builder(this).setMessage(" Looks like youve turned off permission for camera")
             .setPositiveButton("GO TO SETTINGS")
@@ -134,4 +150,34 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener{
 
             }.show()
     }
+
+    private fun dispatchTakePictureIntent() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        try {
+            startActivityForResult(takePictureIntent, CAMERA)
+        } catch (e: ActivityNotFoundException) {
+            // display error state to the user
+        }
+    }
+
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == CAMERA && requestCode == Activity.RESULT_OK){
+                data?.extras?.let {
+                    val thumbail = data.extras!!.get("data") as Bitmap
+                    mBinding.ivDishImage.setImageBitmap(thumbail)
+
+            }
+        }
+    }
+
+
+//    if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+//        val imageBitmap = data.extras.get("data") as Bitmap
+//        imageView.setImageBitmap(imageBitmap)
+//    }
+
+
 }

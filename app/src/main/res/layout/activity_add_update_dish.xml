@@ -37,7 +37,7 @@
             <FrameLayout
                 android:id="@+id/fl_select_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -46,9 +46,8 @@
                 <ImageView
                     android:id="@+id/iv_dish_image"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/logos"
                     android:background="@color/lbl_title"
                     />
 
